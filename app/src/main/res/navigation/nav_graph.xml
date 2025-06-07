@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/storeListFragment">
+
+    <fragment
+        android:id="@+id/storeListFragment"
+        android:name="com.example.final_finaltest.StoreListFragment"
+        android:label="店家列表"
+        tools:layout="@layout/fragment_store_list">
+        <action
+            android:id="@+id/action_storeListFragment_to_storeEditFragment"
+            app:destination="@id/storeEditFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/storeEditFragment"
+        android:name="com.example.final_finaltest.StoreEditFragment"
+        android:label="編輯店家"
+        tools:layout="@layout/fragment_store_edit">
+        <argument
+            android:name="store"
+            app:argType="com.example.final_finaltest.Store"
+            app:nullable="true" />
+    </fragment>
+
+</navigation>
