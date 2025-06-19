@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class StoreAdapter(
     private val stores: List<Store>,
-    private val onItemClick: (Store) -> Unit
+    private val onItemClick: (Store) -> Unit,
+    private val onRatingChanged: ((Store) -> Unit)? = null
 ) : RecyclerView.Adapter<StoreAdapter.StoreViewHolder>() {
     class StoreViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.store_name)
@@ -45,7 +46,7 @@ class StoreAdapter(
         holder.rating.setOnRatingBarChangeListener { _, rating, fromUser ->
             if (fromUser) {
                 store.rating = rating
-                // 通知外部有評分變動（可選）
+                onRatingChanged?.invoke(store)
             }
         }
     }
